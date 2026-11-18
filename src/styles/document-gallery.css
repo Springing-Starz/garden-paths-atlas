@@ -50,7 +50,6 @@
 .dg-thumb .dg-thumb-cover { position:absolute; inset:0; opacity:0; transition:opacity 180ms ease; }
 .dg-thumb .dg-thumb-cover-ready { opacity:1; }
 @media(prefers-reduced-motion:reduce) { .dg-thumb .dg-thumb-cover { transition:none; } }
-.dg-badge { position:absolute; top:8px; left:8px; background:var(--appbar); color:var(--appbar-foreground); font-size:14px; line-height:1.4; font-weight:700; padding:3px 8px; border-radius:4px; }
 .dg-card-body { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; min-width:0; }
 .dg-card-title { margin:0; font-size:16px; font-weight:600; line-height:1.45; overflow-wrap:anywhere; }
 .dg-card-title a { color:var(--foreground); text-decoration:none; }
