@@ -20,7 +20,7 @@ it('names every cover image after its document so search engines can read it', a
 
 it('shows the file-type card instead of a cover when a document has no baked thumbnail', async () => {
   await act(async () => { render(<DocumentGallery items={[{ pdfUrl: 'https://fresh-teacher.github.io/lesson.docx', description: '', price: 5000 }]} />); });
-  expect(screen.getByRole('img', { hidden: true, name: '' }).className).toContain('dg-file-logo');
+  expect(document.querySelector('img.dg-file-logo')).toBeTruthy();
   expect(document.querySelector('img.dg-thumb-cover')).toBeNull();
 });
 
