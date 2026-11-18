@@ -31,7 +31,7 @@ describe('Git-managed static catalogs', () => {
         const { documentIds, ...layout } = normalized;
         const { items, ...oldLayout } = original;
         expect(layout, path).toEqual(oldLayout);
-        expect(await resolveDocuments(documentIds, loadShard), path).toEqual(items.filter((item: { pdfUrl: string }) => isDocumentFile(item.pdfUrl)));
+        expect((await resolveDocuments(documentIds, loadShard)).map(({ thumbUrl: _t, pages: _p, sizeBytes: _s, ...record }) => record), path).toEqual(items.filter((item: { pdfUrl: string }) => isDocumentFile(item.pdfUrl)));
       }
     }
   });

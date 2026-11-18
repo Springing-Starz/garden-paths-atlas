@@ -5,9 +5,11 @@ import { join } from 'node:path';
 const root = join(process.cwd(), 'src/data/catalog');
 const read = (p: string) => JSON.parse(readFileSync(p, 'utf8'));
 
+const readThumbs = () => Object.assign({}, ...readdirSync(join(root, 'thumb-map')).filter((f: string) => f.endsWith('.json')).map((f: string) => read(join(root, 'thumb-map', f))));
+
 describe('baked page items', () => {
   it('keeps Senior Five covers, page counts and sizes consistent across collections', () => {
-    const thumbs = read(join(root, 'thumb-map.json'));
+    const thumbs = readThumbs();
     const urls = new Set<string>();
     let covers = 0;
     let missing = 0;
@@ -42,7 +44,7 @@ describe('baked page items', () => {
     expect(unreadable).toBe(3);
   });
   it('keeps Senior Three covers, page counts and sizes consistent across collections', () => {
-    const thumbs = read(join(root, 'thumb-map.json'));
+    const thumbs = readThumbs();
     const urls = new Set<string>();
     let covers = 0;
     let missing = 0;
@@ -77,7 +79,7 @@ describe('baked page items', () => {
     expect(unreadable).toBe(8);
   });
   it('keeps prepared Senior One page counts and sizes consistent with saved covers', () => {
-    const thumbs = read(join(root, 'thumb-map.json'));
+    const thumbs = readThumbs();
     const prepared = new Set<string>();
     for (const kind of ['resources', 'repositories']) {
       for (const name of readdirSync(join(root, 'page-items', kind))) {
@@ -101,7 +103,7 @@ describe('baked page items', () => {
     expect(prepared.size).toBe(1218);
   });
   it('keeps prepared Senior Two page counts and sizes consistent with saved covers', () => {
-    const thumbs = read(join(root, 'thumb-map.json'));
+    const thumbs = readThumbs();
     const prepared = new Set<string>();
     for (const kind of ['resources', 'repositories']) {
       for (const name of readdirSync(join(root, 'page-items', kind))) {
@@ -125,7 +127,7 @@ describe('baked page items', () => {
     expect(prepared.size).toBe(1135);
   });
   it('keeps Primary 6 covers, page counts and sizes consistent in every collection', () => {
-    const thumbs = read(join(root, 'thumb-map.json'));
+    const thumbs = readThumbs();
     const urls = new Set<string>();
     let missing = 0;
     let unreadable = 0;
@@ -160,7 +162,7 @@ describe('baked page items', () => {
     expect(unreadable).toBe(5);
   });
   it('keeps prepared Primary 3 PDF metadata consistent with its saved covers', () => {
-    const thumbs = read(join(root, 'thumb-map.json'));
+    const thumbs = readThumbs();
     let checked = 0;
     for (const kind of ['resources', 'repositories']) {
       for (const name of readdirSync(join(root, 'page-items', kind))) {
