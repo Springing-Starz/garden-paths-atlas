@@ -47,7 +47,7 @@ function Thumb({ item }: { item: ResourceRecord }) {
     <div className="dg-thumb-placeholder">{placeholder ? <img className="dg-file-logo" src={placeholder.url} alt="" /> : <FileText aria-hidden="true" size={40} strokeWidth={1.2} />}</div>
     {cover ? <img className={`dg-thumb-cover${loaded ? ' dg-thumb-cover-ready' : ''}`} src={item.thumbUrl} alt={`${resourceTitle(item)} cover`} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} onError={() => setFailed(true)} ref={node => { if (node?.complete && node.naturalWidth > 0) setLoaded(true); }} /> : null}
     {spinner ? <span className="dg-thumb-loading"><LogoLoader label="Loading document cover…" /></span> : null}
-    {loaded ? <><span className="dg-badge">{extension(item.pdfUrl)}</span>{item.pages ? <span className="dg-page-count">{item.pages} {item.pages === 1 ? 'page' : 'pages'}</span> : null}</> : null}
+    {loaded && item.pages ? <span className="dg-page-count">{item.pages} {item.pages === 1 ? 'page' : 'pages'}</span> : null}
   </div>;
 }
 
