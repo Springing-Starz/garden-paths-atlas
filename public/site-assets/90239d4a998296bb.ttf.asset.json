@@ -1,11 +1,11 @@
 {
-  "asset_id": "dacc9635-46cc-42f9-ac5c-e35ff23f72e0",
-  "content_type": "font/ttf",
-  "created_at": "2026-11-17T15:31:06Z",
+  "version": 1,
+  "asset_id": "9d6de3a9-df9e-46ba-ab80-43a91851ae67",
+  "project_id": "415a44c9-b1ed-46b9-b0f0-b133301fb72f",
+  "url": "/__l5e/assets-v1/9d6de3a9-df9e-46ba-ab80-43a91851ae67/90239d4a998296bb.ttf",
+  "r2_key": "a/v1/415a44c9-b1ed-46b9-b0f0-b133301fb72f/9d6de3a9-df9e-46ba-ab80-43a91851ae67/90239d4a998296bb.ttf",
   "original_filename": "90239d4a998296bb.ttf",
-  "project_id": "37be7df8-7ce1-4a55-b1cd-53f36a2fcc53",
-  "r2_key": "a/v1/37be7df8-7ce1-4a55-b1cd-53f36a2fcc53/dacc9635-46cc-42f9-ac5c-e35ff23f72e0/90239d4a998296bb.ttf",
   "size": 165548,
-  "url": "/__l5e/assets-v1/dacc9635-46cc-42f9-ac5c-e35ff23f72e0/90239d4a998296bb.ttf",
-  "version": 1
+  "content_type": "font/ttf",
+  "created_at": "2026-11-18T05:35:59Z"
 }

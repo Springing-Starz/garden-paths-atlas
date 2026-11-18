@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-const adminPhoto = { url: '/__l5e/assets-v1/d76e025d-e6fa-474c-ab21-4a7e61ef0b2e/51de6e3f-admin-photo.webp' };
+const adminPhoto = { url: '/__l5e/assets-v1/b6e575ad-8fa6-4b14-ae09-1406698f39ff/51de6e3f-admin-photo.webp' };
 import { legacyGreeting } from '@/lib/legacy-pages';
 import styles from '@/styles/whatsapp-chat.css?raw';
 

@@ -13,6 +13,6 @@ html.vertical-reader { height:100%; overflow:auto; }
 #reader-status { padding:12px; font-family:Arial,sans-serif; color:var(--reader-ink); }
 .flipbook-preloader { background:var(--reader-surface); }
 /* Flipbook preloader uses the same brand loader as the app. */
-.flipbook-preloader .cssload-speeding-wheel { position:absolute; inset:0; margin:auto; width:72px !important; height:72px !important; border:0 !important; border-radius:50%; background:var(--reader-paper) url("/__l5e/assets-v1/e033ae60-9d7f-45de-ba83-c41270aea823/app-logo-loader.webp") center/var(--loader-image-size) no-repeat !important; animation:none !important; }
+.flipbook-preloader .cssload-speeding-wheel { position:absolute; inset:0; margin:auto; width:72px !important; height:72px !important; border:0 !important; border-radius:50%; background:var(--reader-paper) url("/__l5e/assets-v1/a00bb440-34dd-470d-8a7e-e693072973cd/app-logo-loader.webp") center/var(--loader-image-size) no-repeat !important; animation:none !important; }
 .flipbook-preloader .cssload-speeding-wheel::after { content:""; position:absolute; inset:0; border-radius:50%; background:var(--loader-brand-ring); -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - var(--loader-ring-width)), #000 calc(100% - var(--loader-ring-width))); mask:radial-gradient(farthest-side, transparent calc(100% - var(--loader-ring-width)), #000 calc(100% - var(--loader-ring-width))); animation:ft-ring 1.1s linear infinite; }
 @keyframes ft-ring { to { transform:rotate(360deg); } }

@@ -1,11 +1,11 @@
 {
-  "asset_id": "5b766b95-e28f-4cde-974c-f0840cf9ff3d",
-  "content_type": "application/vnd.ms-fontobject",
-  "created_at": "2026-11-17T15:31:08Z",
+  "version": 1,
+  "asset_id": "052f39ab-66eb-440d-8214-8043b4dfb271",
+  "project_id": "415a44c9-b1ed-46b9-b0f0-b133301fb72f",
+  "url": "/__l5e/assets-v1/052f39ab-66eb-440d-8214-8043b4dfb271/a71bd6288d91fefa.eot",
+  "r2_key": "a/v1/415a44c9-b1ed-46b9-b0f0-b133301fb72f/052f39ab-66eb-440d-8214-8043b4dfb271/a71bd6288d91fefa.eot",
   "original_filename": "a71bd6288d91fefa.eot",
-  "project_id": "37be7df8-7ce1-4a55-b1cd-53f36a2fcc53",
-  "r2_key": "a/v1/37be7df8-7ce1-4a55-b1cd-53f36a2fcc53/5b766b95-e28f-4cde-974c-f0840cf9ff3d/a71bd6288d91fefa.eot",
   "size": 70807,
-  "url": "/__l5e/assets-v1/5b766b95-e28f-4cde-974c-f0840cf9ff3d/a71bd6288d91fefa.eot",
-  "version": 1
+  "content_type": "application/vnd.ms-fontobject",
+  "created_at": "2026-11-18T05:36:02Z"
 }

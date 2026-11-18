@@ -1,11 +1,11 @@
 {
-  "asset_id": "a322d06e-7c4d-40e1-b42e-21365683657c",
-  "content_type": "image/webp",
-  "created_at": "2026-11-17T15:31:05Z",
+  "version": 1,
+  "asset_id": "a97a954b-bce8-4cd2-9b24-19b67b16e5cd",
+  "project_id": "415a44c9-b1ed-46b9-b0f0-b133301fb72f",
+  "url": "/__l5e/assets-v1/a97a954b-bce8-4cd2-9b24-19b67b16e5cd/6fdd57e0-sname.webp",
+  "r2_key": "a/v1/415a44c9-b1ed-46b9-b0f0-b133301fb72f/a97a954b-bce8-4cd2-9b24-19b67b16e5cd/6fdd57e0-sname.webp",
   "original_filename": "6fdd57e0-sname.webp",
-  "project_id": "37be7df8-7ce1-4a55-b1cd-53f36a2fcc53",
-  "r2_key": "a/v1/37be7df8-7ce1-4a55-b1cd-53f36a2fcc53/a322d06e-7c4d-40e1-b42e-21365683657c/6fdd57e0-sname.webp",
   "size": 3084,
-  "url": "/__l5e/assets-v1/a322d06e-7c4d-40e1-b42e-21365683657c/6fdd57e0-sname.webp",
-  "version": 1
+  "content_type": "image/webp",
+  "created_at": "2026-11-18T05:35:57Z"
 }

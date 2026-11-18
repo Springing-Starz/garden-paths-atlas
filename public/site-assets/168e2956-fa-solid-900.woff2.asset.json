@@ -1,11 +1,11 @@
 {
-  "asset_id": "30b0af3c-9073-44ab-8955-5d6f58001666",
-  "content_type": "font/woff2",
-  "created_at": "2026-11-17T15:30:59Z",
+  "version": 1,
+  "asset_id": "c5b3c50c-27d7-4be5-b1ea-4c87c2b5d423",
+  "project_id": "415a44c9-b1ed-46b9-b0f0-b133301fb72f",
+  "url": "/__l5e/assets-v1/c5b3c50c-27d7-4be5-b1ea-4c87c2b5d423/168e2956-fa-solid-900.woff2",
+  "r2_key": "a/v1/415a44c9-b1ed-46b9-b0f0-b133301fb72f/c5b3c50c-27d7-4be5-b1ea-4c87c2b5d423/168e2956-fa-solid-900.woff2",
   "original_filename": "168e2956-fa-solid-900.woff2",
-  "project_id": "37be7df8-7ce1-4a55-b1cd-53f36a2fcc53",
-  "r2_key": "a/v1/37be7df8-7ce1-4a55-b1cd-53f36a2fcc53/30b0af3c-9073-44ab-8955-5d6f58001666/168e2956-fa-solid-900.woff2",
   "size": 38784,
-  "url": "/__l5e/assets-v1/30b0af3c-9073-44ab-8955-5d6f58001666/168e2956-fa-solid-900.woff2",
-  "version": 1
+  "content_type": "font/woff2",
+  "created_at": "2026-11-18T05:35:49Z"
 }

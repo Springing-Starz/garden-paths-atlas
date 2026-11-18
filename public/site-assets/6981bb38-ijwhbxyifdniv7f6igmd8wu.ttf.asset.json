@@ -1,11 +1,11 @@
 {
-  "asset_id": "6e799397-e943-4938-a53a-6c49fa1ab687",
-  "content_type": "font/ttf",
-  "created_at": "2026-11-17T15:31:04Z",
+  "version": 1,
+  "asset_id": "1ac7e702-d92f-450c-830d-95bf148be9a4",
+  "project_id": "415a44c9-b1ed-46b9-b0f0-b133301fb72f",
+  "url": "/__l5e/assets-v1/1ac7e702-d92f-450c-830d-95bf148be9a4/6981bb38-ijwhbxyifdniv7f6igmd8wu.ttf",
+  "r2_key": "a/v1/415a44c9-b1ed-46b9-b0f0-b133301fb72f/1ac7e702-d92f-450c-830d-95bf148be9a4/6981bb38-ijwhbxyifdniv7f6igmd8wu.ttf",
   "original_filename": "6981bb38-ijwhbxyifdniv7f6igmd8wu.ttf",
-  "project_id": "37be7df8-7ce1-4a55-b1cd-53f36a2fcc53",
-  "r2_key": "a/v1/37be7df8-7ce1-4a55-b1cd-53f36a2fcc53/6e799397-e943-4938-a53a-6c49fa1ab687/6981bb38-ijwhbxyifdniv7f6igmd8wu.ttf",
   "size": 57496,
-  "url": "/__l5e/assets-v1/6e799397-e943-4938-a53a-6c49fa1ab687/6981bb38-ijwhbxyifdniv7f6igmd8wu.ttf",
-  "version": 1
+  "content_type": "font/ttf",
+  "created_at": "2026-11-18T05:35:56Z"
 }

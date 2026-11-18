@@ -1,11 +1,11 @@
 {
-  "asset_id": "5083c79e-2daa-430f-a7fd-e3ef1177df9a",
-  "content_type": "font/ttf",
-  "created_at": "2026-11-17T15:31:13Z",
+  "version": 1,
+  "asset_id": "85d4c216-3272-4f20-ac7e-85cf087d170e",
+  "project_id": "415a44c9-b1ed-46b9-b0f0-b133301fb72f",
+  "url": "/__l5e/assets-v1/85d4c216-3272-4f20-ac7e-85cf087d170e/fa-brands-400.ttf",
+  "r2_key": "a/v1/415a44c9-b1ed-46b9-b0f0-b133301fb72f/85d4c216-3272-4f20-ac7e-85cf087d170e/fa-brands-400.ttf",
   "original_filename": "fa-brands-400.ttf",
-  "project_id": "37be7df8-7ce1-4a55-b1cd-53f36a2fcc53",
-  "r2_key": "a/v1/37be7df8-7ce1-4a55-b1cd-53f36a2fcc53/5083c79e-2daa-430f-a7fd-e3ef1177df9a/fa-brands-400.ttf",
   "size": 98384,
-  "url": "/__l5e/assets-v1/5083c79e-2daa-430f-a7fd-e3ef1177df9a/fa-brands-400.ttf",
-  "version": 1
+  "content_type": "font/ttf",
+  "created_at": "2026-11-18T05:36:08Z"
 }

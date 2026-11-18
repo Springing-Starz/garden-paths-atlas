@@ -61,14 +61,14 @@ export function Index() {
   return <div className="library-homepage">
     <style>{repairCSS}</style>
     <Button {...doorProps} className={`leftcurtain${doorState}`}>
-      <img src="/__l5e/assets-v1/7ed03a5a-d572-4205-a8e9-f7b23de07c9c/7c2eea45ca9862de.webp" alt="" fetchPriority="high" decoding="async" />
+      <img src="/__l5e/assets-v1/989a9c47-8037-48b9-a3a2-d211bf54d3a8/7c2eea45ca9862de.webp" alt="" fetchPriority="high" decoding="async" />
     </Button>
     <Button {...doorProps} className={`rightcurtain${doorState}`}>
-      <img src="/__l5e/assets-v1/f11054c6-b070-48ed-a372-83600bea9e27/d52f1d3e4b7ea8ab.webp" alt="" fetchPriority="high" decoding="async" />
+      <img src="/__l5e/assets-v1/f5ceb9a2-86b3-4ddf-a293-ef89947d6645/d52f1d3e4b7ea8ab.webp" alt="" fetchPriority="high" decoding="async" />
     </Button>
     <Button {...doorProps} className={`rope${doorState}`}>
       <b className="door-instruction">Tap on the door to enter</b>
-      <img className="door-arrow" src="/__l5e/assets-v1/ba08f978-13f7-44ae-8639-7c0d93934336/243d7d09dd033233.webp" alt="" width="70" fetchPriority="high" decoding="async" />
+      <img className="door-arrow" src="/__l5e/assets-v1/ad647b0b-b545-43e4-b71f-3b5efdad8700/243d7d09dd033233.webp" alt="" width="70" fetchPriority="high" decoding="async" />
     </Button>
     <div className="container">
       <p className="homepage-instruction">Choose one class from the shelf to continue.</p>
@@ -82,11 +82,11 @@ export function Index() {
                 </a>
               </div>)}
             </div>
-            <img className="shelf-img" src="/__l5e/assets-v1/20ca00f4-d0d3-4914-bfc8-01356d075b03/36bc42cbc31e7907.webp" alt="" width="1000" height="96" decoding="async" />
+            <img className="shelf-img" src="/__l5e/assets-v1/70a1c187-6701-41ec-a4ec-587b7c79e964/36bc42cbc31e7907.webp" alt="" width="1000" height="96" decoding="async" />
           </div>
         </span>)}
       </div>
-      <audio ref={audio} id="audiocracker" src="/__l5e/assets-v1/9a73f1f3-5c7f-442a-965b-a6203b082f8a/door.mp3" preload="auto" suppressHydrationWarning />
+      <audio ref={audio} id="audiocracker" src="/__l5e/assets-v1/1f0da725-c1f4-4913-96c4-0b9b166b500d/door.mp3" preload="auto" suppressHydrationWarning />
     </div>
   </div>;
 }

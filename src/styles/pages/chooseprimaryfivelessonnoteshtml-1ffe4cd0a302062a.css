@@ -266,7 +266,7 @@
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
- */@font-face{font-family:'FontAwesome';src:url('/__l5e/assets-v1/8cac6457-cf10-4fe9-a9ac-de43806dff13/598970410a88ee2c.eot');src:url('/__l5e/assets-v1/8cac6457-cf10-4fe9-a9ac-de43806dff13/598970410a88ee2c.eot') format('embedded-opentype'),url('/__l5e/assets-v1/e5fd7c2b-6bf2-47bd-ada5-db5397968893/ea4d092734404745.woff2') format('woff2'),url('/__l5e/assets-v1/95b402b9-51d6-4d72-b90c-115e214d6b6d/bac257ab594f4c77.woff') format('woff'),url('/__l5e/assets-v1/dacc9635-46cc-42f9-ac5c-e35ff23f72e0/90239d4a998296bb.ttf') format('truetype'),url('data:,') format('svg');font-weight:normal;font-style:normal}.fa-ul>li{position:relative}:root .fa-rotate-90,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-flip-horizontal,:root .fa-flip-vertical{filter:none}
+ */@font-face{font-family:'FontAwesome';src:url('/__l5e/assets-v1/257fc8de-c7e4-4cde-b42b-790eb464e3a1/598970410a88ee2c.eot');src:url('/__l5e/assets-v1/257fc8de-c7e4-4cde-b42b-790eb464e3a1/598970410a88ee2c.eot') format('embedded-opentype'),url('/__l5e/assets-v1/496d9678-399a-4d77-a5d0-8d42619ba8a5/ea4d092734404745.woff2') format('woff2'),url('/__l5e/assets-v1/f4a07263-d76b-4b0a-a5d3-8ebc4d3dbeed/bac257ab594f4c77.woff') format('woff'),url('/__l5e/assets-v1/9d6de3a9-df9e-46ba-ab80-43a91851ae67/90239d4a998296bb.ttf') format('truetype'),url('data:,') format('svg');font-weight:normal;font-style:normal}.fa-ul>li{position:relative}:root .fa-rotate-90,:root .fa-rotate-180,:root .fa-rotate-270,:root .fa-flip-horizontal,:root .fa-flip-vertical{filter:none}
 
 
 .footer .section-title { text-align: center; color: rgb(192, 57, 43); margin-bottom: 50px; text-transform: uppercase; }
@@ -1148,11 +1148,11 @@
 
 
 
-@font-face { font-family: "Font Awesome 5 Brands"; font-style: normal; font-weight: 400; src: url("/__l5e/assets-v1/42d0f5d2-7662-47e6-bcff-769cbc4f0280/323b32af311ce277.woff2") format("woff2"), url("/__l5e/assets-v1/10de36de-bce2-4a00-9581-bdbc4ac305fc/187393a974ed6595.woff") format("woff"), url("/__l5e/assets-v1/1becd4c7-609f-4635-a5cc-e5574fb3ca2e/8e804f46c1570658.ttf") format("truetype"); }
+@font-face { font-family: "Font Awesome 5 Brands"; font-style: normal; font-weight: 400; src: url("/__l5e/assets-v1/9ead0de7-f33f-4d71-b431-b53d2d50ee6f/323b32af311ce277.woff2") format("woff2"), url("/__l5e/assets-v1/59050580-7306-487f-a8c7-f30e78dbfd87/187393a974ed6595.woff") format("woff"), url("/__l5e/assets-v1/ecfc333e-dce9-4825-b3c0-20c44b83d0cd/8e804f46c1570658.ttf") format("truetype"); }
 
-@font-face { font-family: "Font Awesome 5 Free"; font-style: normal; font-weight: 400; src: url("/__l5e/assets-v1/e8cf3683-b3a9-4769-9590-7c87c0e67fe4/6384d8cbfc9f23bf.woff2") format("woff2"), url("/__l5e/assets-v1/47f63e4d-057c-4817-8162-c45069ca0c78/e3ffc8818f7ae05a.woff") format("woff"), url("/__l5e/assets-v1/d3cfc3df-7d80-411e-b6df-04a942cb06c0/267ca250e9e68bfe.ttf") format("truetype"); }
+@font-face { font-family: "Font Awesome 5 Free"; font-style: normal; font-weight: 400; src: url("/__l5e/assets-v1/9a7882eb-0dd6-4b33-bcda-92a3cde32e1c/6384d8cbfc9f23bf.woff2") format("woff2"), url("/__l5e/assets-v1/860f2149-e41e-4cf7-a4fb-71f3f69c5a53/e3ffc8818f7ae05a.woff") format("woff"), url("/__l5e/assets-v1/6d6172f6-182f-4718-9b29-28da4dce165c/267ca250e9e68bfe.ttf") format("truetype"); }
 
-@font-face { font-family: "Font Awesome 5 Free"; font-style: normal; font-weight: 900; src: url("/__l5e/assets-v1/22ab264d-eceb-471e-a32b-e7f9f7ef7dd1/a6500f279f8443ee.woff2") format("woff2"), url("/__l5e/assets-v1/49fbb369-e4ad-4c51-8702-cdd54feecdaf/ce20d424f4b55c2a.woff") format("woff"), url("/__l5e/assets-v1/dc4482ef-2ebe-4c9d-b6bd-14da3659c75c/b5e96f725c280b08.ttf") format("truetype"); }
+@font-face { font-family: "Font Awesome 5 Free"; font-style: normal; font-weight: 900; src: url("/__l5e/assets-v1/9bdf2c17-34de-4f33-9130-f0a17049cd66/a6500f279f8443ee.woff2") format("woff2"), url("/__l5e/assets-v1/a9722d68-dda1-4c3d-9883-8cf8247d4711/ce20d424f4b55c2a.woff") format("woff"), url("/__l5e/assets-v1/7c825690-4410-4721-8af6-cddc6f758247/b5e96f725c280b08.ttf") format("truetype"); }
 
 
 
