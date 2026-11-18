@@ -5,7 +5,7 @@ import { join } from 'node:path';
 const root = join(process.cwd(), 'src/data/catalog');
 const read = (p: string) => JSON.parse(readFileSync(p, 'utf8'));
 
-const readThumbs = () => Object.assign({}, ...require('node:fs').readdirSync(join(root, 'thumb-map')).filter((f: string) => f.endsWith('.json')).map((f: string) => read(join(root, 'thumb-map', f))));
+const readThumbs = () => Object.assign({}, ...readdirSync(join(root, 'thumb-map')).filter((f: string) => f.endsWith('.json')).map((f: string) => read(join(root, 'thumb-map', f))));
 
 describe('baked page items', () => {
   it('keeps Senior Five covers, page counts and sizes consistent across collections', () => {
