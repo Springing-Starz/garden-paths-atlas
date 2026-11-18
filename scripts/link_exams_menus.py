@@ -55,6 +55,10 @@ def main() -> int:
         # A direct button: no dropdown, it opens the class exam documents page.
         menu["href"] = f"/more/exams-{key}"
         menu["items"] = []
+        holiday = next((item for item in data["menus"] if item.get("label") == "HOLIDAY PACKAGES"), None)
+        if holiday is not None:
+            holiday["href"] = f"/more/packages-{key}"
+            holiday["items"] = []
         path.write_text(compact(data) + "\n", encoding="utf-8")
         changed += 1
         print(f"{stem}: EXAMINATIONS -> /more/exams-{key}")

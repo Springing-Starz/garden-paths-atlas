@@ -48,6 +48,27 @@ CLASSES: dict[str, tuple[str, str, str]] = {
     "S6": ("s6", "Senior Six", "Senior Six Examinations"),
 }
 
+PRIMARY_FOLDERS = {"Baby", "Middle", "Top", "P1", "P2", "P3", "P4", "P5", "P6"}
+# Root PDFs named after a class are that class's holiday package.
+PACKAGE_FILES = {"Baby": "Baby.PDF", "Middle": "Middle Class.PDF", "Top": "Top.PDF", **{f"P{n}": f"P{n}.PDF" for n in range(1, 7)}}
+# (repo path, display title) shown on every Baby-P6 page.
+SHARED_EXAMS = [("All Class Exams.pdf", "All Exams"), ("All Holiday Packages.pdf", "All Holiday Packages")]
+SHARED_PACKAGES = [("All Holiday Packages.pdf", "All Holiday Packages"), ("All Holiday Packages.zip", "All Holiday Packages (ZIP)")]
+
+
+def by_path(blobs: list[dict], path: str) -> dict | None:
+    return next((entry for entry in blobs if entry["path"] == path), None)
+
+
+def shared(blobs: list[dict], items: list[tuple[str, str]]) -> list[tuple[dict, str, str]]:
+    found = []
+    for path, title in items:
+        entry = by_path(blobs, path)
+        if entry is not None:
+            found.append((entry, title, "Baby Class to Primary Six"))
+    return found
+
+
 DOCUMENT_SUFFIXES = {".pdf", ".doc", ".docx", ".ppt", ".pptx", ".xls", ".xlsx", ".zip", ".rar", ".7z"}
 
 
@@ -130,27 +151,39 @@ def main() -> int:
             ordered.append(archive_blob)
         ordered.extend(files)
 
-        repo_key = f"exams-{key}"
-        document_ids: list[str] = []
-        for entry in ordered:
-            identifier = document_id(entry["path"])
-            url = file_url(entry["path"])
-            is_archive = archive_blob is not None and entry["path"] == archive
-            records[identifier] = {
-                "title": "All Examinations" if is_archive else title_for(entry["path"]),
-                "description": label,
-                "price": "",
-                "pdfUrl": url,
-            }
-            index_entries[document_key(url)] = {
-                "id": identifier,
-                "path": f"more/{repo_key}",
-                "kind": "repositories",
-                "data": f"{repo_key}.json",
-            }
-            document_ids.append(identifier)
+        primary = folder in PRIMARY_FOLDERS
+        exam_titles: list[tuple[dict, str, str]] = []
+        if archive_blob is not None:
+            exam_titles.append((archive_blob, "All Examinations", label))
+        exam_titles.extend((entry, title_for(entry["path"]), label) for entry in files)
+        if primary:
+            exam_titles.extend(shared(blobs, SHARED_EXAMS))
 
-        pages[repo_key] = {"title": page_label, "documentIds": document_ids}
+        package_titles: list[tuple[dict, str, str]] = []
+        if primary:
+            package = by_path(blobs, PACKAGE_FILES[folder])
+            if package is not None:
+                package_titles.append((package, f"{label} Holiday Package", label))
+            package_titles.extend(shared(blobs, SHARED_PACKAGES))
+
+        for repo_key, title, entries in (
+            (f"exams-{key}", page_label, exam_titles),
+            (f"packages-{key}", f"{label} Holiday Packages", package_titles),
+        ):
+            document_ids: list[str] = []
+            for entry, doc_title, description in entries:
+                # Shared files appear on several pages; give each page its own record.
+                identifier = document_id(f"{repo_key}:{entry['path']}")
+                url = file_url(entry["path"])
+                records[identifier] = {"title": doc_title, "description": description, "price": "", "pdfUrl": url}
+                index_entries.setdefault(document_key(url), {
+                    "id": identifier,
+                    "path": f"more/{repo_key}",
+                    "kind": "repositories",
+                    "data": f"{repo_key}.json",
+                })
+                document_ids.append(identifier)
+            pages[repo_key] = {"title": title, "documentIds": document_ids}
 
     if not pages:
         raise SystemExit("No exam files found in the repository.")
