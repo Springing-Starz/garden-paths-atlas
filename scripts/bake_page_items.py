@@ -49,6 +49,9 @@ if __name__ == '__main__':
     parser.add_argument('--thumb-map', type=pathlib.Path)
     args = parser.parse_args()
     sizes = json.loads(args.size_map.read_text()) if args.size_map else {}
-    thumbs = json.loads(args.thumb_map.read_text()) if args.thumb_map else {}
+    thumbs = {}
+    if args.thumb_map and args.thumb_map.is_dir():
+        for f in sorted(args.thumb_map.glob('*.json')): thumbs.update(json.loads(f.read_text()))
+    elif args.thumb_map: thumbs = json.loads(args.thumb_map.read_text())
     root = pathlib.Path(__file__).resolve().parent.parent / 'src/data/catalog'
     print('baked', bake(root, sizes, thumbs), 'pages')

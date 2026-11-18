@@ -1,8 +1,8 @@
 """Pre-bake first-page covers and page counts for catalog PDFs.
 Usage: python scripts/generate_thumbnails.py --match p7 --batch-size 1000 --offset 0 --workers 4
 Resumable: existing thumbnails are skipped. Writes public/thumbs/<id>.webp and
-src/data/catalog/thumb-map.json (url -> {thumbUrl, pages}). Then run
-python scripts/bake_page_items.py --thumb-map src/data/catalog/thumb-map.json"""
+src/data/catalog/thumb-map/<0-f>.json (url -> {thumbUrl, pages}). Then run
+python scripts/bake_page_items.py --thumb-map src/data/catalog/thumb-map"""
 import argparse, hashlib, io, json, pathlib, urllib.parse, urllib.request
 import multiprocessing as mp, os
 import urllib.error
@@ -14,7 +14,7 @@ BROKEN = {'thumbUrl': '/thumbs/broken-link.webp'}
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CATALOG = ROOT / 'src/data/catalog'
 OUT = ROOT / 'public/thumbs'
-MAP = CATALOG / 'thumb-map.json'
+MAP = CATALOG / 'thumb-map'  # sharded by sha1(url)[0] to stay under file-size limits
 
 def thumb_id(url): return hashlib.sha1(url.encode()).hexdigest()[:16]
 
@@ -56,8 +56,18 @@ def work(url):
     except Exception: return url, None
 
 def save(done):
-    tmp = MAP.with_suffix('.json.tmp')
-    tmp.write_text(json.dumps(done, indent=0, sort_keys=True)); os.replace(tmp, MAP)
+    MAP.mkdir(parents=True, exist_ok=True); shards = {}
+    for k, v in done.items(): shards.setdefault(hashlib.sha1(k.encode()).hexdigest()[0], {})[k] = v
+    for h, m in shards.items():
+        tmp = MAP / f'{h}.json.tmp'
+        tmp.write_text(json.dumps(m, indent=0, sort_keys=True)); os.replace(tmp, MAP / f'{h}.json')
+
+def load_map(path=MAP):
+    path = pathlib.Path(path); out = {}
+    if path.is_dir():
+        for f in sorted(path.glob('*.json')): out.update(json.loads(f.read_text()))
+    elif path.exists(): out = json.loads(path.read_text())
+    return out
 
 def pending(done, urls):
     def ok(u):
@@ -76,7 +86,7 @@ if __name__ == '__main__':
     p.add_argument('--status', action='store_true', help='only report progress')
     a = p.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
-    done = json.loads(MAP.read_text()) if MAP.exists() else {}
+    done = load_map()
     urls = target_urls([m for m in a.match.lower().split(',') if m])
     todo = pending(done, urls)
     print(f'{a.match or "all"}: {len(urls) - len(todo)}/{len(urls)} done, {len(todo)} remaining')
