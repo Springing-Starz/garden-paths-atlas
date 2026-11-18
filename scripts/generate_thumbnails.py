@@ -21,8 +21,9 @@ def thumb_id(url): return hashlib.sha1(url.encode()).hexdigest()[:16]
 def target_urls(match):
     urls = set()
     for f in (CATALOG / 'page-items').glob('*/*.json'):
-        if match and not any(m in f.stem.lower() for m in match): continue
+        hit = not match or any(m in f.stem.lower() for m in match)
         for r in json.loads(f.read_text()):
+            if not hit and not any(m in r['pdfUrl'].lower() for m in match): continue
             if urllib.parse.urlparse(r['pdfUrl']).path.lower().endswith('.pdf'): urls.add(r['pdfUrl'])
     return sorted(urls)
 
