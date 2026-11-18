@@ -32,3 +32,4 @@ use the editor.
 ## Imported source architecture
 - Preserve the imported file-based routes and static catalog shards; they reproduce the source app without adding a database dependency.
 - Keep this project’s hosting bootstrap and project identity separate from source imports to avoid overwriting its deployment configuration.
+- Document covers come from the offline thumbnail pipeline (`scripts/generate_thumbnails.py` → `scripts/bake_page_items.py`); browsing must never render PDFs in the browser, so do not reintroduce runtime pdf.js thumbnail generation into the gallery.
