@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Imported source architecture
+- Preserve the imported file-based routes and static catalog shards; they reproduce the source app without adding a database dependency.
+- Keep this project’s hosting bootstrap and project identity separate from source imports to avoid overwriting its deployment configuration.
