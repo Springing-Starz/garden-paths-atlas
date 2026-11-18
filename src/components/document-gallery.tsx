@@ -41,7 +41,7 @@ function Thumb({ item }: { item: ResourceRecord }) {
   const [failed, setFailed] = useState(false);
   const placeholder = documentPlaceholder(item.pdfUrl);
   if (item.thumbUrl && !failed) return <div className="dg-thumb">
-    <img className="dg-thumb-cover dg-thumb-cover-ready" src={item.thumbUrl} alt="" loading="lazy" decoding="async" onError={() => setFailed(true)} />
+    <img className="dg-thumb-cover dg-thumb-cover-ready" src={item.thumbUrl} alt={`${resourceTitle(item)} cover`} loading="lazy" decoding="async" onError={() => setFailed(true)} />
     <span className="dg-badge">{extension(item.pdfUrl)}</span>
     {item.pages ? <span className="dg-page-count">{item.pages} {item.pages === 1 ? 'page' : 'pages'}</span> : null}
   </div>;
