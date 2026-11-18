@@ -1,3 +1,4 @@
+import { useMatches as useImportedMatches } from "@tanstack/react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -12,6 +13,14 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { LibraryShell } from '@/components/library-shell';
+import { Toaster } from '@/components/ui/sonner';
+import { VisitorNotices } from '@/components/visitor-notices';
+import { earlyTapQueueScript } from '@/lib/early-tap-queue';
+import appIcon from '@/assets/icon-192.png.asset.json';
+import appleIcon from '@/assets/apple-touch-icon.png.asset.json';
+import favicon from '@/assets/favicon.png.asset.json';
+import { adsenseBootstrap } from '@/lib/adsense';
 
 function NotFoundComponent() {
   return (
@@ -74,28 +83,36 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  staticData: { sitemap: false },
   head: () => ({
-    // Replace these placeholders with the app's name and description when first building the app.
-    // Each content route, / included, must still set its own head(). Never add og:image or
-    // twitter:image here: every page without its own would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Fresh Teacher's Library" },
+      { name: "description", content: "Fresh Teacher's educational resource library." },
+      { name: "author", content: "Fresh Teacher" },
+      { property: "og:title", content: "Fresh Teacher's Library" },
+      { property: "og:description", content: "Fresh Teacher's educational resource library." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "theme-color", content: "#1b2437" },
+      { name: "application-name", content: "Fresh App" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
+      { name: "apple-mobile-web-app-title", content: "Fresh App" },
+      { name: "mobile-web-app-capable", content: "yes" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: favicon.url, type: "image/png", sizes: "64x64" },
+      { rel: "icon", href: appIcon.url, type: "image/png", sizes: "192x192" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: appleIcon.url, sizes: "180x180" },
+      { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" },
+      { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/v4-shims.min.css" },
     ],
   }),
   shellComponent: RootShell,
@@ -104,13 +121,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+declare module "@tanstack/react-router" {
+  interface StaticDataRouteOption {
+    importedDocument?: {
+      html?: import("react").HTMLAttributes<HTMLHtmlElement> & Record<`data-${string}`, string>;
+      body?: import("react").HTMLAttributes<HTMLBodyElement> & Record<`data-${string}`, string>;
+    };
+  }
+}
+
+// After a new deploy, old hashed chunks disappear; reload once (per 30s) to fetch the fresh build.
+const staleChunkReloadScript = `(function(){var K='ft-chunk-reload';function r(){try{var t=+sessionStorage.getItem(K)||0;if(Date.now()-t<30000)return;sessionStorage.setItem(K,String(Date.now()));}catch(e){}location.reload();}window.addEventListener('vite:preloadError',function(e){e.preventDefault();r();});window.addEventListener('unhandledrejection',function(e){var m=String(e.reason&&e.reason.message||e.reason||'');if(/Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module/i.test(m))r();});})();`;
+
 function RootShell({ children }: { children: ReactNode }) {
+  const importedDocument = useImportedMatches({ select: matches => matches.at(-1)?.staticData.importedDocument });
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning {...importedDocument?.html}>
       <head>
+        <style href="site-import-inline" precedence="imported-inline">{"@layer imported-inline;"}</style>
+        <script dangerouslySetInnerHTML={{ __html: earlyTapQueueScript }} />
+        <script dangerouslySetInnerHTML={{ __html: staleChunkReloadScript }} />
+        <script dangerouslySetInnerHTML={{ __html: adsenseBootstrap }} />
         <HeadContent />
       </head>
-      <body>
+      <body {...importedDocument?.body}>
         {children}
         <Scripts />
       </body>
@@ -124,7 +158,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <LibraryShell><Outlet /></LibraryShell>
+      <VisitorNotices />
+      <Toaster />
     </QueryClientProvider>
   );
 }
