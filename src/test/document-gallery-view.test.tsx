@@ -12,6 +12,20 @@ afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.useRealTimers(); });
 
 const BAKED = { pdfUrl: 'https://fresh-teacher.github.io/P7_SST_Full_Year_2024.pdf', description: '', price: 5000, thumbUrl: '/thumbs/p7-sst.jpg' };
 
+it('spins over the file-type card until the real cover arrives', async () => {
+  vi.useFakeTimers();
+  render(<DocumentGallery items={[BAKED]} />);
+  act(() => { vi.advanceTimersByTime(200); });
+  expect(screen.getByRole('status', { name: 'Loading document cover…' })).toBeTruthy();
+  expect(document.querySelector('img.dg-thumb-cover-ready')).toBeNull();
+  const image = document.querySelector('img.dg-thumb-cover');
+  if (!image) throw new Error('Cover missing');
+  fireEvent.load(image);
+  act(() => {});
+  expect(screen.queryByRole('status', { name: 'Loading document cover…' })).toBeNull();
+  expect(document.querySelector('img.dg-thumb-cover-ready')).toBeTruthy();
+});
+
 it('names every cover image after its document so search engines can read it', async () => {
   await act(async () => { render(<DocumentGallery items={[BAKED]} />); });
   const image = screen.getByRole('img', { name: 'P.7 SST Full Year 2024 cover' });

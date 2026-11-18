@@ -39,13 +39,16 @@ function sizeBand(bytes: number | null | undefined): SizeBand | null {
 // show only their file-type icon, so browsing never runs pdf.js.
 function Thumb({ item }: { item: ResourceRecord }) {
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const placeholder = documentPlaceholder(item.pdfUrl);
-  if (item.thumbUrl && !failed) return <div className="dg-thumb">
-    <img className="dg-thumb-cover dg-thumb-cover-ready" src={item.thumbUrl} alt={`${resourceTitle(item)} cover`} loading="lazy" decoding="async" onError={() => setFailed(true)} />
-    <span className="dg-badge">{extension(item.pdfUrl)}</span>
-    {item.pages ? <span className="dg-page-count">{item.pages} {item.pages === 1 ? 'page' : 'pages'}</span> : null}
+  const cover = Boolean(item.thumbUrl) && !failed;
+  const spinner = useLoadingIndicator(cover && !loaded);
+  return <div className="dg-thumb">
+    <div className="dg-thumb-placeholder">{placeholder ? <img className="dg-file-logo" src={placeholder.url} alt="" /> : <FileText aria-hidden="true" size={40} strokeWidth={1.2} />}</div>
+    {cover ? <img className={`dg-thumb-cover${loaded ? ' dg-thumb-cover-ready' : ''}`} src={item.thumbUrl} alt={`${resourceTitle(item)} cover`} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} onError={() => setFailed(true)} ref={node => { if (node?.complete && node.naturalWidth > 0) setLoaded(true); }} /> : null}
+    {spinner ? <span className="dg-thumb-loading"><LogoLoader label="Loading document cover…" /></span> : null}
+    {loaded ? <><span className="dg-badge">{extension(item.pdfUrl)}</span>{item.pages ? <span className="dg-page-count">{item.pages} {item.pages === 1 ? 'page' : 'pages'}</span> : null}</> : null}
   </div>;
-  return <div className="dg-thumb"><div className="dg-thumb-placeholder">{placeholder ? <img className="dg-file-logo" src={placeholder.url} alt="" /> : <FileText aria-hidden="true" size={40} strokeWidth={1.2} />}</div></div>;
 }
 
 export function DocumentGallery({ items, sourceItems = items, onView, query = '', onClear, onQueryChange, sourcePath, initialContext = {}, afterUrl, searchResults, ads = true }: { items: ResourceRecord[]; sourceItems?: ResourceRecord[]; onView?: (element: HTMLElement, item: ResourceRecord) => void; query?: string; onClear?: () => void; onQueryChange?: (value: string) => void; sourcePath?: string; initialContext?: BrowsingContext; afterUrl?: string; ads?: boolean; searchResults?: { total: number; page: number; sort: string; type: string; onChange: (sort: string, type: string) => void } }) {
