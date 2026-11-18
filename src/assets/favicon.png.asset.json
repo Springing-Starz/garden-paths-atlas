@@ -1,11 +1,11 @@
 {
-  "asset_id": "b70aa399-14b6-47fc-a788-295ac035ae8a",
-  "content_type": "image/png",
-  "created_at": "2026-11-17T15:30:54Z",
+  "version": 1,
+  "asset_id": "e3f48a29-ce5f-41ef-a6fa-288ad01707fc",
+  "project_id": "415a44c9-b1ed-46b9-b0f0-b133301fb72f",
+  "url": "/__l5e/assets-v1/e3f48a29-ce5f-41ef-a6fa-288ad01707fc/favicon.png",
+  "r2_key": "a/v1/415a44c9-b1ed-46b9-b0f0-b133301fb72f/e3f48a29-ce5f-41ef-a6fa-288ad01707fc/favicon.png",
   "original_filename": "favicon.png",
-  "project_id": "37be7df8-7ce1-4a55-b1cd-53f36a2fcc53",
-  "r2_key": "a/v1/37be7df8-7ce1-4a55-b1cd-53f36a2fcc53/b70aa399-14b6-47fc-a788-295ac035ae8a/favicon.png",
   "size": 7999,
-  "url": "/__l5e/assets-v1/b70aa399-14b6-47fc-a788-295ac035ae8a/favicon.png",
-  "version": 1
+  "content_type": "image/png",
+  "created_at": "2026-11-18T09:52:21Z"
 }
